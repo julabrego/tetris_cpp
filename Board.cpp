@@ -2,7 +2,7 @@
 #include <iostream>
 #include <conio2.h>
 #include "Tetromino.h"
-#include "Straight.h"
+
 using namespace std;
 
 Board::Board() {
@@ -30,7 +30,7 @@ int Board::colorBox(int box){
 }
 
 void Board::setCurrentTetromino(Tetromino _tetromino){
-	_tetromino.setPosition(4,4);
+	_tetromino.setPosition(4,0);
 	currentTetromino = _tetromino;
 }
 

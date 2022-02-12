@@ -2,9 +2,9 @@
 #define STRAIGHT_H
 #include "Tetromino.h"
 
-class Straight : public Tetromino {
+class TetrominoI : public Tetromino {
 public:
-	Straight();
+	TetrominoI();
 private:
 };
 

@@ -19,6 +19,11 @@ int Tetromino::getYPosition(){
 	return y_pos;
 }
 
+void Tetromino::fall(){
+	cout << y_pos;
+	y_pos++;
+}
+
 void Tetromino::rotateRight(){
 	
 		int auxShape[4][4];

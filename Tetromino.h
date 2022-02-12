@@ -16,7 +16,7 @@ public:
 	void setPosition(int x, int y);
 	int getXPosition();
 	int getYPosition();
-	
+	void fall();
 
 };
 
