@@ -3,6 +3,8 @@
 
 class Tetromino {
 private:
+	
+protected:
 	void setShapeOfTetromino(int auxShape[4][4]);
 	
 public:
