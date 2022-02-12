@@ -3,6 +3,7 @@
 
 class Tetromino {
 private:
+	void setShapeOfTetromino(int auxShape[4][4]);
 	
 public:
 	int shape[4][4];
@@ -13,6 +14,7 @@ public:
 	void setPosition(int x, int y);
 	int getXPosition();
 	int getYPosition();
+	
 
 };
 
