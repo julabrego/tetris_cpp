@@ -30,12 +30,8 @@ int Board::colorBox(int box){
 }
 
 void Board::setCurrentTetromino(Tetromino _tetromino){
-	_tetromino.setPosition(4,0);
+	_tetromino.setPosition(4,1);
 	currentTetromino = _tetromino;
-}
-
-Tetromino Board::getCurrentTetromino(){
-	return currentTetromino;
 }
 
 void Board::printTetromino(){
@@ -43,6 +39,18 @@ void Board::printTetromino(){
 	for(int i = 0; i < 4; i++){
 		for (int j = 0; j < 4; j++){
 			board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] = currentTetromino.shape[i][j];
+		}
+	}
+}
+
+Tetromino* Board::getCurrentTetromino(){
+	return &currentTetromino;
+}
+
+void Board::clearBoard(){
+	for(int i = 1; i < 21; i++){
+		for(int j = 1; j < 11; j++){
+			board[i][j] = 0;
 		}
 	}
 }

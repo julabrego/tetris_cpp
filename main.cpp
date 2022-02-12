@@ -11,7 +11,7 @@ int main (int argc, char *argv[]) {
 	
 	TetrominoI tetromino;
 	board.setCurrentTetromino(tetromino);
-	Tetromino currentTetromino = board.getCurrentTetromino();
+	Tetromino* currentTetromino = board.getCurrentTetromino();
 	
 	clock_t tempo = clock();
 	int velocidad = 1;
@@ -23,25 +23,20 @@ int main (int argc, char *argv[]) {
 			int tecla=getch();
 			
 			if(tecla == 120){
-				currentTetromino.rotateRight();
-				board.setCurrentTetromino(currentTetromino);
-				
+				currentTetromino->rotateRight();
 			}else if(tecla == 122){
-				currentTetromino.rotateLeft();
-				board.setCurrentTetromino(currentTetromino);
+				currentTetromino->rotateLeft();
 			}
-			
 		}
 		
+		board.clearBoard();
 		board.printTetromino();
 		board.printBoard();
 		
 		if(tempo + paso < clock()){
-			currentTetromino.fall();
+			currentTetromino->fall();
 			tempo = clock();
 		}
-		
-		
 		
 	}
 	
