@@ -18,8 +18,6 @@ Game::Game() {
 	
 	playing = true;
 
-	//Tetromino tetromino;
-	
 	Tetromino *currentTetromino = generateNextTetromino();
 	board.setCurrentTetromino(*currentTetromino);
 	
@@ -27,11 +25,11 @@ Game::Game() {
 		
 		if(kbhit()) { 
 			int tecla=getch();
-//			cout << tecla;
-			if(tecla == 120){
+
+			if(tecla == 120 || tecla == 88){
 				// X
 				board.getCurrentTetromino()->rotateRight();
-			}else if(tecla == 122){
+			}else if(tecla == 122 || tecla == 90){
 				// Z
 				board.getCurrentTetromino()->rotateLeft();
 			}else if(tecla == 77){
@@ -40,8 +38,10 @@ Game::Game() {
 			}else if(tecla == 75){
 				// Left
 				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() - 1, board.getCurrentTetromino()->getYPosition());
+			}else if(tecla == 80){
+				// Down
+				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition(), board.getCurrentTetromino()->getYPosition() + 1);
 			}
-			
 		}
 		
 		board.clearBoard();
@@ -61,6 +61,7 @@ Tetromino* Game::generateNextTetromino(){
 	srand(time(NULL));
 	
 	int randomNumber = rand() % 7 + 1;
+	randomNumber = 4;
 	Tetromino *nextTetromino;
 	
 	switch(randomNumber){
