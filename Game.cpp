@@ -3,6 +3,7 @@
 #include "Board.h"
 #include <conio2.h>
 #include "TetrominoI.h"
+#include "TetrominoL.h"
 using namespace std;
 
 Game::Game() {
@@ -11,10 +12,10 @@ Game::Game() {
 	
 	playing = true;
 
-	Tetromino tetromino;
-//	board.insertTetromino();
-	board.setCurrentTetromino(tetromino);
-	Tetromino *currentTetromino = board.getCurrentTetromino();
+	//Tetromino tetromino;
+	
+	Tetromino *currentTetromino = generateNextTetromino();
+	board.setCurrentTetromino(*currentTetromino);
 	
 	while(playing){
 		
@@ -51,7 +52,8 @@ Game::Game() {
 }
 
 Tetromino* Game::generateNextTetromino(){
-	Tetromino *tetrominoI = new TetrominoI();
+//	Tetromino *tetrominoI = new TetrominoI();
+	Tetromino *tetrominoI = new TetrominoL();
 	return tetrominoI;
 }
 
