@@ -4,6 +4,12 @@
 #include <conio2.h>
 #include "TetrominoI.h"
 #include "TetrominoL.h"
+#include <ctime>
+#include "TetrominoJ.h"
+#include "TetrominoT.h"
+#include "TetrominoZ.h"
+#include "TetrominoS.h"
+#include "TetrominoSquare.h"
 using namespace std;
 
 Game::Game() {
@@ -52,8 +58,35 @@ Game::Game() {
 }
 
 Tetromino* Game::generateNextTetromino(){
-//	Tetromino *tetrominoI = new TetrominoI();
-	Tetromino *tetrominoI = new TetrominoL();
-	return tetrominoI;
+	srand(time(NULL));
+	
+	int randomNumber = rand() % 7 + 1;
+	Tetromino *nextTetromino;
+	
+	switch(randomNumber){
+	case 1:
+		nextTetromino = new TetrominoI();
+		break;
+	case 2:
+		nextTetromino = new TetrominoL();
+		break;
+	case 3:
+		nextTetromino = new TetrominoJ();
+		break;
+	case 4:
+		nextTetromino = new TetrominoT();
+		break;
+	case 5:
+		nextTetromino = new TetrominoZ();
+		break;
+	case 6:
+		nextTetromino = new TetrominoS();
+		break;
+	case 7:
+		nextTetromino = new TetrominoSquare();
+		break;
+	}
+	
+	return nextTetromino;
 }
 

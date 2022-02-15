@@ -1,13 +1,13 @@
 #include "TetrominoI.h"
 
 TetrominoI::TetrominoI() {
-	int shapeI[4][4] = {
+	int shape[4][4] = {
 		{0, 2, 0, 0},
 		{0, 2, 0, 0},
 		{0, 2, 0, 0},
 		{0, 2, 0, 0}
 	};
 	
-	setShapeOfTetromino(shapeI);
+	setShapeOfTetromino(shape);
 }
 
