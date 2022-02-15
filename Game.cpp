@@ -43,7 +43,7 @@ Game::Game() {
 		board.printBoard();
 		
 		if(tempo + step < clock()){
-			currentTetromino->fall();
+			board.getCurrentTetromino()->fall();
 			tempo = clock();
 		}
 		
