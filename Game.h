@@ -1,10 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
 #include <ctime>
+#include "Tetromino.h"
 
 class Game {
 public:
 	Game();
+	Tetromino *generateNextTetromino();
 	
 private:
 	clock_t tempo = clock();

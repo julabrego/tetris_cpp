@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Board.h"
 #include <conio2.h>
+#include "TetrominoI.h"
 using namespace std;
 
 Game::Game() {
@@ -47,5 +48,10 @@ Game::Game() {
 		
 	}
 	
+}
+
+Tetromino* Game::generateNextTetromino(){
+	Tetromino *tetrominoI = new TetrominoI();
+	return tetrominoI;
 }
 
