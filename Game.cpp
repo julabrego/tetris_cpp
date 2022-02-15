@@ -24,16 +24,16 @@ Game::Game() {
 //			cout << tecla;
 			if(tecla == 120){
 				// X
-				currentTetromino->rotateRight();
+				board.getCurrentTetromino()->rotateRight();
 			}else if(tecla == 122){
 				// Z
-				currentTetromino->rotateLeft();
+				board.getCurrentTetromino()->rotateLeft();
 			}else if(tecla == 77){
 				// Right
-				currentTetromino->setPosition(currentTetromino->getXPosition() + 1, currentTetromino->getYPosition());
+				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());
 			}else if(tecla == 75){
 				// Left
-				currentTetromino->setPosition(currentTetromino->getXPosition() - 1, currentTetromino->getYPosition());
+				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() - 1, board.getCurrentTetromino()->getYPosition());
 			}
 			
 		}
