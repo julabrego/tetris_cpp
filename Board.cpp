@@ -38,7 +38,9 @@ void Board::printTetromino(){
 	// Imprimir Tetromino
 	for(int i = 0; i < 4; i++){
 		for (int j = 0; j < 4; j++){
-			board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] = currentTetromino.shape[i][j];
+			if(currentTetromino.shape[i][j] != 0){
+				board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] = currentTetromino.shape[i][j];	
+			}
 		}
 	}
 }

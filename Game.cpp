@@ -34,7 +34,10 @@ Game::Game() {
 				board.getCurrentTetromino()->rotateLeft();
 			}else if(tecla == 77){
 				// Right
-				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());
+				if(board.getCurrentTetromino()->getXPosition() < 8){
+					board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
+				}
+				
 			}else if(tecla == 75){
 				// Left
 				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() - 1, board.getCurrentTetromino()->getYPosition());
@@ -61,7 +64,7 @@ Tetromino* Game::generateNextTetromino(){
 	srand(time(NULL));
 	
 	int randomNumber = rand() % 7 + 1;
-	randomNumber = 4;
+	
 	Tetromino *nextTetromino;
 	
 	switch(randomNumber){

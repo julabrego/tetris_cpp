@@ -3,14 +3,13 @@
 
 class Tetromino {
 private:
-	
+	int x_pos, y_pos;
 protected:
 	void setShapeOfTetromino(int auxShape[4][4]);
 	
 public:
-	int shape[4][4];
-	int x_pos, y_pos;
 	Tetromino();
+	int shape[4][4];
 	void rotateLeft();
 	void rotateRight();
 	void setPosition(int x, int y);

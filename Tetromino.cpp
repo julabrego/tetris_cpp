@@ -9,8 +9,6 @@ Tetromino::Tetromino() {
 void Tetromino::setPosition(int x, int y){
 	x_pos = x;
 	y_pos = y;
-	
-	//cout << "x: " << x_pos << ", y: " << y_pos;
 }
 
 int Tetromino::getXPosition(){
