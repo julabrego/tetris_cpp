@@ -50,6 +50,7 @@ Game::Game() {
 		board.getCurrentTetromino()->isCollidingLeftWall();
 		board.getCurrentTetromino()->bottomCollides();
 		board.printTetromino();
+		board.currentTetrominoCollides();
 		board.printBoard();
 		
 		if(tempo + step < clock()){

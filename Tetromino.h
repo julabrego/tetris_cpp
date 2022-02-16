@@ -21,7 +21,7 @@ public:
 	void isCollidingRightWall();
 	void isCollidingLeftWall();
 	
-	void bottomCollides();
+	bool bottomCollides();
 
 };
 
