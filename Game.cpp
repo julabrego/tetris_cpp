@@ -34,9 +34,7 @@ Game::Game() {
 				board.getCurrentTetromino()->rotateLeft();
 			}else if(tecla == 77){
 				// Right
-				if(board.getCurrentTetromino()->getXPosition() < 8){
-					board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
-				}
+				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
 				
 			}else if(tecla == 75){
 				// Left
@@ -48,6 +46,8 @@ Game::Game() {
 		}
 		
 		board.clearBoard();
+		board.getCurrentTetromino()->isCollidingRightWall();
+		board.getCurrentTetromino()->isCollidingLeftWall();
 		board.printTetromino();
 		board.printBoard();
 		

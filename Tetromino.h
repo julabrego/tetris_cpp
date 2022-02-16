@@ -4,6 +4,7 @@
 class Tetromino {
 private:
 	int x_pos, y_pos;
+	int right_offset;
 protected:
 	void setShapeOfTetromino(int auxShape[4][4]);
 	
@@ -16,6 +17,9 @@ public:
 	int getXPosition();
 	int getYPosition();
 	void fall();
+	
+	void isCollidingRightWall();
+	void isCollidingLeftWall();
 
 };
 

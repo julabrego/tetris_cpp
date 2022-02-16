@@ -55,3 +55,29 @@ void Tetromino::setShapeOfTetromino(int auxShape[4][4]){
 		}
 	}
 }
+
+void Tetromino::isCollidingRightWall(){
+	int rightLimit = 0;
+	for(int i = 0; i < 4; i ++){
+		for(int j = 3; j >= 0; j--){
+			if(shape[i][j] == 2 && rightLimit < j){
+				rightLimit = j;
+			}
+		}
+	}
+	
+	if(x_pos + rightLimit >= 11) x_pos --;
+}
+
+void Tetromino::isCollidingLeftWall(){
+	int leftLimit = 3;
+	for(int i = 0; i < 4; i ++){
+		for(int j = 3; j >= 0; j--){
+			if(shape[i][j] == 2 && j < leftLimit){
+				leftLimit = j;
+			}
+		}
+	}
+	
+	if(x_pos + leftLimit < 1) x_pos ++;
+}
