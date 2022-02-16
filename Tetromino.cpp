@@ -81,3 +81,18 @@ void Tetromino::isCollidingLeftWall(){
 	
 	if(x_pos + leftLimit < 1) x_pos ++;
 }
+
+void Tetromino::bottomCollides(){
+	int bottomLimit = 0;
+	for(int i = 3; i >= 0; i--){
+		for(int j = 0; j < 4; j++){
+			if(shape[i][j] == 2 && i > bottomLimit){
+				bottomLimit = i;
+			}
+		}
+	}
+	
+	if(y_pos + bottomLimit + 1 >= 22){
+		cout << "Bottom";
+	}
+}
