@@ -31,26 +31,14 @@ Game::Game() {
 			if(tecla == 120 || tecla == 88){
 				// X
 				board.getCurrentTetromino()->rotateRight();
+				board.correctPositionWhenMovementIsNotValid("right");
 			}else if(tecla == 122 || tecla == 90){
 				// Z
 				board.getCurrentTetromino()->rotateLeft();
 			}else if(tecla == 77){
-				// Right
-				
-					
-					if(board.isMovementValid("right")){
-						board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
-					}
-				
-//				for(int i = 0; i < 4; i ++){
-//					for(int j = 3; j >= 0; j--){
-//						if(board.board[board.getCurrentTetromino()->getYPosition() + i][board.getCurrentTetromino()->getXPosition() + j] == 0){
-//							
-//						}
-//					}
-//				}
-				
-				//if(x_pos + rightLimit >= 11) x_pos --;
+				// move Right
+				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
+				board.correctPositionWhenMovementIsNotValid("right");
 				
 			}else if(tecla == 75){
 				// Left

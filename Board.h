@@ -71,7 +71,7 @@ public:
 	void setCurrentTetromino(Tetromino _tetromino);
 	void printTetromino();
 	Tetromino* getCurrentTetromino();
-	bool isMovementValid(string direction); 
+	void correctPositionWhenMovementIsNotValid(string direction); 
 
 };
 

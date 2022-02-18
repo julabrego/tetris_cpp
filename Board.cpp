@@ -89,20 +89,18 @@ void Board::fixCurrentTetromino(){
 }
 
 
-bool Board::isMovementValid(string direction){
+void Board::correctPositionWhenMovementIsNotValid(string direction){
 	if(direction == "right"){
 		for(int i = 0; i < 4; i ++){
 			for(int j = 3; j >= 0; j--){
 				if(currentTetromino.shape[i][j] != 0){
-					if(board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j + 1] == 1
+					if(board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 1
 						||
-						board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j + 1] == 3){
-						return false;
+						board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3){
+						currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
 					}
-					//currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
 				}
 			}
 		}
 	}
-	return true;
 }
