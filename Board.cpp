@@ -14,10 +14,10 @@ void Board::printBoard(){
 	for (int i = 0; i < 12; i++){
 		for (int k = 0; k < 22; k++){
 			textcolor(colorBox(board[k][i]));
-			gotoxy(i + 1,k + 1);
-			cout << board[k][i];
-//			putchxy(2+i,2+k,board[k][i]);
-//			putchxy(2+i,2+k,BOX);
+			//gotoxy(i + 1,k + 1);
+			//cout << board[k][i];
+			putchxy(2+i,2+k,board[k][i]);
+			putchxy(2+i,2+k,BOX);
 		}
 	}
 };
@@ -60,28 +60,13 @@ void Board::clearBoard(){
 	}
 }
 
-void Board::currentTetrominoCollides(){
-	if(currentTetromino.bottomCollides()){
-		for(int i = 0; i < 4; i++){
-			for (int j = 0; j < 4; j++){
-				if(currentTetromino.shape[i][j] != 0){
-					board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] = 3;
-					emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] = 3;	
-				}
-			}
-		}
-		
-		currentTetromino.setPosition(4, 0);
-	}
-	
-//	cout << "a: " << emptyBoard[currentTetromino.getYPosition()][currentTetromino.getXPosition()];
-}
-
 bool Board::currentTetrominoIsCollidingWithFixedPiece(){
 	
 	for(int i = 3; i >= 0; i--){
 		for(int j = 0; j < 4; j++){
-			if(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3){
+			if(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3
+				||
+				currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 1){
 				return true;
 			}
 		}

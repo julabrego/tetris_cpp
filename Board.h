@@ -61,7 +61,6 @@ public:
 	Board();
 	void printBoard();
 	void clearBoard();
-	void currentTetrominoCollides();
 	bool currentTetrominoIsCollidingWithFixedPiece();
 	void fixCurrentTetromino();
 	

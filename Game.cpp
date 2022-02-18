@@ -50,9 +50,7 @@ Game::Game() {
 		board.clearBoard();
 		board.getCurrentTetromino()->isCollidingRightWall();
 		board.getCurrentTetromino()->isCollidingLeftWall();
-		board.getCurrentTetromino()->bottomCollides();
 		board.printTetromino();
-		board.currentTetrominoCollides();
 		if(board.currentTetrominoIsCollidingWithFixedPiece()){
 			board.fixCurrentTetromino();
 			spawnTetromino();
