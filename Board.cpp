@@ -11,10 +11,13 @@ Board::Board() {
 void Board::printBoard(){
 	const char BOX = 'O';
 	
-	for (int i= 0; i<12; i++){
-		for (int k= 0; k<22; k++){
+	for (int i = 0; i < 12; i++){
+		for (int k = 0; k < 22; k++){
 			textcolor(colorBox(board[k][i]));
-			putchxy(2+i,2+k,BOX);
+			gotoxy(i + 1,k + 1);
+			cout << board[k][i];
+//			putchxy(2+i,2+k,board[k][i]);
+//			putchxy(2+i,2+k,BOX);
 		}
 	}
 };
@@ -71,5 +74,32 @@ void Board::currentTetrominoCollides(){
 		currentTetromino.setPosition(4, 0);
 	}
 	
+//	cout << "a: " << emptyBoard[currentTetromino.getYPosition()][currentTetromino.getXPosition()];
+}
+
+bool Board::currentTetrominoIsCollidingWithFixedPiece(){
 	
+	for(int i = 3; i >= 0; i--){
+		for(int j = 0; j < 4; j++){
+			if(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3){
+				return true;
+			}
+		}
+	}
+	
+	return false;
+	
+}
+
+void Board::fixCurrentTetromino(){
+	for(int i = 0; i < 4; i++){
+		for (int j = 0; j < 4; j++){
+			if(currentTetromino.shape[i][j] != 0){
+				board[currentTetromino.getYPosition() + i - 1][currentTetromino.getXPosition() + j] = 3;
+				emptyBoard[currentTetromino.getYPosition() + i - 1][currentTetromino.getXPosition() + j] = 3;	
+			}
+		}
+	}
+	
+	currentTetromino.setPosition(4, 0);
 }
