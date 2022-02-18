@@ -36,7 +36,21 @@ Game::Game() {
 				board.getCurrentTetromino()->rotateLeft();
 			}else if(tecla == 77){
 				// Right
-				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
+				
+					
+					if(board.isMovementValid("right")){
+						board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
+					}
+				
+//				for(int i = 0; i < 4; i ++){
+//					for(int j = 3; j >= 0; j--){
+//						if(board.board[board.getCurrentTetromino()->getYPosition() + i][board.getCurrentTetromino()->getXPosition() + j] == 0){
+//							
+//						}
+//					}
+//				}
+				
+				//if(x_pos + rightLimit >= 11) x_pos --;
 				
 			}else if(tecla == 75){
 				// Left
@@ -48,7 +62,7 @@ Game::Game() {
 		}
 		
 		board.clearBoard();
-		board.getCurrentTetromino()->isCollidingRightWall();
+//		board.getCurrentTetromino()->isCollidingRightWall();
 		board.getCurrentTetromino()->isCollidingLeftWall();
 		board.printTetromino();
 		if(board.currentTetrominoIsCollidingWithFixedPiece()){

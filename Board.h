@@ -1,6 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include "Tetromino.h"
+#include <string>
+using namespace std;
 
 class Board {
 private:
@@ -69,6 +71,7 @@ public:
 	void setCurrentTetromino(Tetromino _tetromino);
 	void printTetromino();
 	Tetromino* getCurrentTetromino();
+	bool isMovementValid(string direction); 
 
 };
 
