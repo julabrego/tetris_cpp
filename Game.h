@@ -7,6 +7,8 @@ class Game {
 public:
 	Game();
 	Tetromino *generateNextTetromino();
+	void spawnTetromino();
+	Tetromino *currentTetromino;
 	
 private:
 	clock_t tempo = clock();

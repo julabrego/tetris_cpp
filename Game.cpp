@@ -12,13 +12,15 @@
 #include "TetrominoSquare.h"
 using namespace std;
 
+Board board;
+
 Game::Game() {
-	Board board;
+	
 	board.printBoard();
 	
 	playing = true;
 
-	Tetromino *currentTetromino = generateNextTetromino();
+	currentTetromino = generateNextTetromino();
 	board.setCurrentTetromino(*currentTetromino);
 	
 	while(playing){
@@ -53,6 +55,7 @@ Game::Game() {
 		board.currentTetrominoCollides();
 		if(board.currentTetrominoIsCollidingWithFixedPiece()){
 			board.fixCurrentTetromino();
+			spawnTetromino();
 		}
 		
 		board.printBoard();
@@ -100,3 +103,7 @@ Tetromino* Game::generateNextTetromino(){
 	return nextTetromino;
 }
 
+void Game::spawnTetromino(){
+	currentTetromino = generateNextTetromino();
+	board.setCurrentTetromino(*currentTetromino);
+}

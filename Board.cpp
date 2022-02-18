@@ -101,5 +101,4 @@ void Board::fixCurrentTetromino(){
 		}
 	}
 	
-	currentTetromino.setPosition(4, 0);
 }
