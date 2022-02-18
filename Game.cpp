@@ -27,31 +27,34 @@ Game::Game() {
 		
 		if(kbhit()) { 
 			int tecla=getch();
-
+			string directionToDetectCollision;
 			if(tecla == 120 || tecla == 88){
 				// X
 				board.getCurrentTetromino()->rotateRight();
-				board.correctPositionWhenMovementIsNotValid("right");
+				directionToDetectCollision = "right";
+
 			}else if(tecla == 122 || tecla == 90){
 				// Z
 				board.getCurrentTetromino()->rotateLeft();
+				directionToDetectCollision = "left";
 			}else if(tecla == 77){
 				// move Right
 				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
-				board.correctPositionWhenMovementIsNotValid("right");
-				
+				directionToDetectCollision = "right";
 			}else if(tecla == 75){
-				// Left
+				// move Left
 				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() - 1, board.getCurrentTetromino()->getYPosition());
+				directionToDetectCollision = "left";
 			}else if(tecla == 80){
 				// Down
 				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition(), board.getCurrentTetromino()->getYPosition() + 1);
+				directionToDetectCollision = "down";
 			}
+			
+			board.correctPositionWhenMovementIsNotValid(directionToDetectCollision);
 		}
 		
 		board.clearBoard();
-//		board.getCurrentTetromino()->isCollidingRightWall();
-		board.getCurrentTetromino()->isCollidingLeftWall();
 		board.printTetromino();
 		if(board.currentTetrominoIsCollidingWithFixedPiece()){
 			board.fixCurrentTetromino();

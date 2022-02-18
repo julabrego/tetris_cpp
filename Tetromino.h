@@ -18,9 +18,6 @@ public:
 	int getYPosition();
 	void fall();
 	
-	void isCollidingRightWall();
-	void isCollidingLeftWall();
-	
 	bool bottomCollides();
 
 };

@@ -102,5 +102,17 @@ void Board::correctPositionWhenMovementIsNotValid(string direction){
 				}
 			}
 		}
+	}else if(direction == "left"){
+		for(int i = 0; i < 4; i ++){
+			for(int j = 0; j < 4; j++){
+				if(currentTetromino.shape[i][j] != 0){
+					if(board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 1
+						||
+						board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3){
+						currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
+					}
+				}
+			}
+		}
 	}
 }
