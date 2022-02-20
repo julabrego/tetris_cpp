@@ -7,6 +7,8 @@
 #include <ctime>
 using namespace std;
 
+int lines = 0;
+
 Board::Board() {
 };
 
@@ -129,8 +131,6 @@ void Board::checkLines(){
 			j++;
 			
 			if(j >= 11) {
-				gotoxy(14,20);
-				cout << "linea";
 				clearLine(i);
 				j = 1;
 			}
@@ -140,16 +140,15 @@ void Board::checkLines(){
 
 void Board::clearLine(int linea){
 	for(int i = linea; i > 1; i--){
-		for(int j = 1; j < 11; j++){
-//			board[i][j] = 0;
-//			emptyBoard[i][j] = 0;
-			
+		for(int j = 1; j < 11; j++){	
 			board[i][j] = board[i - 1][j];
 			emptyBoard[i][j] = emptyBoard[i -1][j];
 		}
 	}
-	gotoxy(14,23);
-	cout << " clearline";
+	
+	lines++;
+	gotoxy(23, 2);
+	cout << lines;
 }
 
 bool Board::isBoardFull(){

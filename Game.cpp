@@ -17,6 +17,9 @@ Board board;
 Game::Game() {
 	
 	board.printBoard();
+	
+	gotoxy(15, 2);
+	cout << "Lineas: ";
 
 	currentTetromino = generateNextTetromino();
 	board.setCurrentTetromino(*currentTetromino);
