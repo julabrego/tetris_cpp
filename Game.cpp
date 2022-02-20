@@ -56,6 +56,7 @@ Game::Game() {
 		board.printTetromino();
 		if(board.currentTetrominoIsCollidingWithFixedPiece()){
 			board.fixCurrentTetromino();
+			board.checkLines();
 			isGameOver();
 			spawnTetromino();
 		}

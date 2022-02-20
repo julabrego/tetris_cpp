@@ -3,6 +3,8 @@
 #include <conio2.h>
 #include "Tetromino.h"
 
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 Board::Board() {
@@ -117,9 +119,42 @@ void Board::correctPositionWhenMovementIsNotValid(string direction){
 	}
 }
 
+void Board::checkLines(){
+	int j;
+
+	for (int i = 20; i > 1; i--){
+		j = 1;
+
+		while(j < 11 && emptyBoard[i][j] != 0){
+			j++;
+			
+			if(j >= 11) {
+				gotoxy(14,20);
+				cout << "linea";
+				clearLine(i);
+				j = 1;
+			}
+		}
+	}	
+}
+
+void Board::clearLine(int linea){
+	for(int i = linea; i > 1; i--){
+		for(int j = 1; j < 11; j++){
+//			board[i][j] = 0;
+//			emptyBoard[i][j] = 0;
+			
+			board[i][j] = board[i - 1][j];
+			emptyBoard[i][j] = emptyBoard[i -1][j];
+		}
+	}
+	gotoxy(14,23);
+	cout << " clearline";
+}
+
 bool Board::isBoardFull(){
 	for(int i = 1; i < 11; i++){
-		if(board[1][i] != 0) return true;
+		if(board[1][i] == 3) return true;
 	}
 	return false;
 }

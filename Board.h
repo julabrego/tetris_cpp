@@ -73,6 +73,8 @@ public:
 	Tetromino* getCurrentTetromino();
 	void correctPositionWhenMovementIsNotValid(string direction); 
 	
+	void checkLines();
+	void clearLine(int line);
 	bool isBoardFull();
 
 };
