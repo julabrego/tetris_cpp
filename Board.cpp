@@ -18,21 +18,26 @@ void Board::printBoard(){
 	for (int i = 0; i < 12; i++){
 		for (int k = 0; k < 22; k++){
 			textcolor(colorBox(board[k][i]));
-			//gotoxy(i + 1,k + 1);
-			//cout << board[k][i];
 			putchxy(2+i,2+k,board[k][i]);
 			putchxy(2+i,2+k,BOX);
+//			putchxy(2+i,2+k,board[k][i]);
 		}
 	}
 };
 
 int Board::colorBox(int box){
 	const int BLACK = 0;
-	const int DARKGREY = 8;
 	const int LIGHTGREY = 7;
+	const int GREEN = 2;
+	const int RED = 4;
+	
 	switch(box){
-	case 0: return BLACK; // DARKGREY
-	case 1: return LIGHTGREY; // LIGHTGREY
+	case 0: return BLACK; break;
+	case 1: return LIGHTGREY;  break;
+	case 2: return GREEN; break;
+	case 3: return RED; break;
+	default: return BLACK;
+
 	};
 }
 
@@ -45,7 +50,9 @@ void Board::printTetromino(){
 	// Imprimir Tetromino
 	for(int i = 0; i < 4; i++){
 		for (int j = 0; j < 4; j++){
-			if(currentTetromino.shape[i][j] != 0){
+			if((currentTetromino.shape[i][j] != 0)
+				&&
+				(currentTetromino.getYPosition() + i < 21)){
 				board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] = currentTetromino.shape[i][j];	
 			}
 		}
@@ -68,9 +75,9 @@ bool Board::currentTetrominoIsCollidingWithFixedPiece(){
 	
 	for(int i = 3; i >= 0; i--){
 		for(int j = 0; j < 4; j++){
-			if(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3
+			if((currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3)
 				||
-				currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 1){
+				(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 1)){
 				return true;
 			}
 		}
@@ -102,6 +109,7 @@ void Board::correctPositionWhenMovementIsNotValid(string direction){
 						||
 						board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3){
 						currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
+						j++;
 					}
 				}
 			}
@@ -114,6 +122,7 @@ void Board::correctPositionWhenMovementIsNotValid(string direction){
 						||
 						board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] == 3){
 						currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
+						j--;
 					}
 				}
 			}
