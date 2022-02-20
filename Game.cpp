@@ -17,8 +17,6 @@ Board board;
 Game::Game() {
 	
 	board.printBoard();
-	
-	playing = true;
 
 	currentTetromino = generateNextTetromino();
 	board.setCurrentTetromino(*currentTetromino);
@@ -58,6 +56,7 @@ Game::Game() {
 		board.printTetromino();
 		if(board.currentTetrominoIsCollidingWithFixedPiece()){
 			board.fixCurrentTetromino();
+			isGameOver();
 			spawnTetromino();
 		}
 		
@@ -109,4 +108,8 @@ Tetromino* Game::generateNextTetromino(){
 void Game::spawnTetromino(){
 	currentTetromino = generateNextTetromino();
 	board.setCurrentTetromino(*currentTetromino);
+}
+
+void Game::isGameOver(){
+	playing = !board.isBoardFull();
 }

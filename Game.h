@@ -10,12 +10,14 @@ public:
 	void spawnTetromino();
 	Tetromino *currentTetromino;
 	
+	void isGameOver();
+	
 private:
 	clock_t tempo = clock();
 	int speed = 1;
 	clock_t step = CLOCKS_PER_SEC/speed;
 	
-	bool playing;
+	bool playing = true;
 };
 
 #endif

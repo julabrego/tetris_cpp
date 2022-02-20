@@ -116,3 +116,10 @@ void Board::correctPositionWhenMovementIsNotValid(string direction){
 		}
 	}
 }
+
+bool Board::isBoardFull(){
+	for(int i = 1; i < 11; i++){
+		if(board[1][i] != 0) return true;
+	}
+	return false;
+}

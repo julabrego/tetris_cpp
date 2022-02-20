@@ -72,6 +72,8 @@ public:
 	void printTetromino();
 	Tetromino* getCurrentTetromino();
 	void correctPositionWhenMovementIsNotValid(string direction); 
+	
+	bool isBoardFull();
 
 };
 
