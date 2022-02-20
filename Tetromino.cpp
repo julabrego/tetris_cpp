@@ -1,5 +1,6 @@
 #include "Tetromino.h"
 #include <iostream>
+#include <conio2.h>
 using namespace std;
 
 Tetromino::Tetromino() {
@@ -21,6 +22,14 @@ int Tetromino::getYPosition(){
 
 void Tetromino::fall(){
 	y_pos++;
+}
+
+void Tetromino::moveRight(){
+	x_pos++;
+}
+
+void Tetromino::moveLeft(){
+	x_pos--;
 }
 
 void Tetromino::rotateRight(){

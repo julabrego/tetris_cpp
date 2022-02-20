@@ -73,6 +73,9 @@ public:
 	Tetromino* getCurrentTetromino();
 	void correctPositionWhenMovementIsNotValid(string direction); 
 	
+	bool isValidRight();
+	bool isValidLeft();
+	
 	void checkLines();
 	void clearLine(int line);
 	bool isBoardFull();

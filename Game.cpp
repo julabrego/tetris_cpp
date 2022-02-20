@@ -40,11 +40,17 @@ Game::Game() {
 				directionToDetectCollision = "left";
 			}else if(tecla == 77){
 				// move Right
-				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() + 1, board.getCurrentTetromino()->getYPosition());	
+				if(board.isValidRight()){
+					board.getCurrentTetromino()->moveRight();
+				}
+				
 				directionToDetectCollision = "right";
 			}else if(tecla == 75){
 				// move Left
-				board.getCurrentTetromino()->setPosition(board.getCurrentTetromino()->getXPosition() - 1, board.getCurrentTetromino()->getYPosition());
+				if(board.isValidLeft()){
+					board.getCurrentTetromino()->moveLeft();	
+				}
+				
 				directionToDetectCollision = "left";
 			}else if(tecla == 80){
 				// Down

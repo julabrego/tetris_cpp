@@ -18,6 +18,9 @@ public:
 	int getYPosition();
 	void fall();
 	
+	void moveRight();
+	void moveLeft();
+	
 	bool bottomCollides();
 
 };
