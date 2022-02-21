@@ -127,38 +127,40 @@ bool Board::isValidLeft(){
 
 void Board::rotateTetrominoRightIfValid(){
 	currentTetromino.rotateRight();
-	correctPositionAfterRightRotation();
-}
-
-void Board::correctPositionAfterRightRotation(){
-	for(int i = 0; i < 4; i++){
-		for(int j = 3; j >= 2; j--){
-			if(currentTetromino.shape[i][j] == 2){
-			   if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
-				currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
-				correctPositionAfterRightRotation();
-			   }
-			}
-		}
-	}
+	correctPositionAfterRotation();
 }
 
 void Board::rotateTetrominoLeftIfValid(){
-	currentTetromino.rotateLeft();
-	correctPositionAfterLeftRotation();
+	currentTetromino.rotateRight();
+	correctPositionAfterRotation();
 }
 
-void Board::correctPositionAfterLeftRotation(){
+void Board::correctPositionAfterRotation(){
+	bool isFixed = false;
+	
 	for(int i = 0; i < 4; i++){
-		for(int j = 0; j < 2; j++){
-			if(currentTetromino.shape[i][j] == 2){
-				if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
-					currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
-					correctPositionAfterLeftRotation();
+		for(int j = 3; j >= 2; j--){
+			while(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){  
+				currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
+				correctPositionAfterRotation();
+				isFixed = true;
+			}
+		}
+	}
+	
+	if(!isFixed){
+		for (int i = 0; i < 4; i++){
+			for(int j = 0; j < 2; j++){
+				if(currentTetromino.shape[i][j] == 2){
+					if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
+						currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
+						correctPositionAfterRotation();
+					}
 				}
 			}
 		}
 	}
+	
 }
 
 void Board::correctPositionWhenMovementIsNotValid(string direction){

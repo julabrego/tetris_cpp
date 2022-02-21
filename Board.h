@@ -77,9 +77,8 @@ public:
 	bool isValidLeft();
 	
 	void rotateTetrominoRightIfValid();
-	void correctPositionAfterRightRotation();
 	void rotateTetrominoLeftIfValid();
-	void correctPositionAfterLeftRotation();
+	void correctPositionAfterRotation();
 	
 	void checkLines();
 	void clearLine(int line);
