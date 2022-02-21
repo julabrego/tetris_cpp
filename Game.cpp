@@ -38,7 +38,7 @@ Game::Game() {
 
 			}else if(tecla == 122 || tecla == 90){
 				// Z
-				board.getCurrentTetromino()->rotateLeft();
+				board.rotateTetrominoLeftIfValid();
 				directionToDetectCollision = "left";
 			}else if(tecla == 77){
 				// move Right

@@ -78,6 +78,8 @@ public:
 	
 	void rotateTetrominoRightIfValid();
 	void correctPositionAfterRightRotation();
+	void rotateTetrominoLeftIfValid();
+	void correctPositionAfterLeftRotation();
 	
 	void checkLines();
 	void clearLine(int line);

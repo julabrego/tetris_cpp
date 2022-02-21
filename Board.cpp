@@ -132,13 +132,30 @@ void Board::rotateTetrominoRightIfValid(){
 
 void Board::correctPositionAfterRightRotation(){
 	for(int i = 0; i < 4; i++){
-		for(int j = 3; j >= 0; j--){
+		for(int j = 3; j >= 2; j--){
 			if(currentTetromino.shape[i][j] == 2){
-				
 			   if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
 				currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
 				correctPositionAfterRightRotation();
 			   }
+			}
+		}
+	}
+}
+
+void Board::rotateTetrominoLeftIfValid(){
+	currentTetromino.rotateLeft();
+	correctPositionAfterLeftRotation();
+}
+
+void Board::correctPositionAfterLeftRotation(){
+	for(int i = 0; i < 4; i++){
+		for(int j = 0; j < 2; j++){
+			if(currentTetromino.shape[i][j] == 2){
+				if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
+					currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
+					correctPositionAfterLeftRotation();
+				}
 			}
 		}
 	}
