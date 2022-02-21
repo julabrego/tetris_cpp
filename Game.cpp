@@ -31,7 +31,9 @@ Game::Game() {
 			string directionToDetectCollision;
 			if(tecla == 120 || tecla == 88){
 				// X
-				board.getCurrentTetromino()->rotateRight();
+//				board.getCurrentTetromino()->rotateRight();
+				
+				board.rotateTetrominoRightIfValid();
 				directionToDetectCollision = "right";
 
 			}else if(tecla == 122 || tecla == 90){
@@ -58,7 +60,7 @@ Game::Game() {
 				directionToDetectCollision = "down";
 			}
 			
-			board.correctPositionWhenMovementIsNotValid(directionToDetectCollision);
+			//board.correctPositionWhenMovementIsNotValid(directionToDetectCollision);
 		}
 		
 		board.clearBoard();

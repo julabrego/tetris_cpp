@@ -76,6 +76,9 @@ public:
 	bool isValidRight();
 	bool isValidLeft();
 	
+	void rotateTetrominoRightIfValid();
+	void correctPositionAfterRightRotation();
+	
 	void checkLines();
 	void clearLine(int line);
 	bool isBoardFull();

@@ -125,6 +125,25 @@ bool Board::isValidLeft(){
 	return true;
 }
 
+void Board::rotateTetrominoRightIfValid(){
+	currentTetromino.rotateRight();
+	correctPositionAfterRightRotation();
+}
+
+void Board::correctPositionAfterRightRotation(){
+	for(int i = 0; i < 4; i++){
+		for(int j = 3; j >= 0; j--){
+			if(currentTetromino.shape[i][j] == 2){
+				
+			   if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
+				currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
+				correctPositionAfterRightRotation();
+			   }
+			}
+		}
+	}
+}
+
 void Board::correctPositionWhenMovementIsNotValid(string direction){
 	if(direction != "down"){
 		for(int i = 0; i < 4; i ++){
