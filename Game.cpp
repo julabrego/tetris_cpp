@@ -20,6 +20,15 @@ Game::Game() {
 	
 	gotoxy(15, 2);
 	cout << "Lineas: 0";
+	
+	gotoxy(15,4);
+	cout << "Z: rotar a la izquierda" << endl;
+	
+	gotoxy(15,5);
+	cout << "X: rotar a la derecha";
+	
+	gotoxy(15,6);
+	cout << "Desplazamiento con las flechas direccionales";
 
 	currentTetromino = generateNextTetromino();
 	board.setCurrentTetromino(*currentTetromino);
