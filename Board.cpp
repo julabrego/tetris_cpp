@@ -103,7 +103,7 @@ bool Board::isValidRight(){
 	for (int i = 0; i < 4; i++){
 		for (int j = 3; j >= 0; j--){
 			if(currentTetromino.shape[i][j] == 2){
-				if(board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j + 1] != 0){
+				if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j + 1] != 0){
 					return false;
 				}
 			}
@@ -116,7 +116,7 @@ bool Board::isValidLeft(){
 	for (int i = 0; i < 4; i++){
 		for (int j = 0; j < 4; j++){
 			if(currentTetromino.shape[i][j] == 2){
-				if(board[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j - 1] != 0){
+				if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j - 1] != 0){
 					return false;
 				}
 			}
@@ -127,22 +127,58 @@ bool Board::isValidLeft(){
 
 void Board::rotateTetrominoRightIfValid(){
 	currentTetromino.rotateRight();
-	correctPositionAfterRotation();
+	correctPositionAfterRotation(true);
 }
 
 void Board::rotateTetrominoLeftIfValid(){
-	currentTetromino.rotateRight();
-	correctPositionAfterRotation();
+	currentTetromino.rotateLeft();
+	correctPositionAfterRotation(false);
 }
 
-void Board::correctPositionAfterRotation(){
+bool Board::isCollidingOnLeft(){
+	for(int i = 0; i < 2; i++){
+		for	(int j = 0; j < 4; j++){
+			if(currentTetromino.shape[j][i] == 2){
+				if(emptyBoard[currentTetromino.getYPosition() + j][currentTetromino.getXPosition() + i] != 0){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+bool Board::isCollidingOnRight(){
+	for(int i = 3; i >= 2; i--){
+		for	(int j = 0; j < 4; j++){
+			if(currentTetromino.shape[j][i] == 2){
+				if(emptyBoard[currentTetromino.getYPosition() + j][currentTetromino.getXPosition() + i] != 0){
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void Board::correctPositionAfterRotation(bool rotatedRight){
 	bool isFixed = false;
 	
 	for(int i = 0; i < 4; i++){
 		for(int j = 3; j >= 2; j--){
 			while(currentTetromino.shape[i][j] == 2 && emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){  
 				currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
-				correctPositionAfterRotation();
+				if(isCollidingOnLeft()){
+					if(rotatedRight){
+						currentTetromino.rotateLeft();	
+					}else{
+						currentTetromino.rotateRight();
+					}
+					currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
+				}else{
+					correctPositionAfterRotation(rotatedRight);	
+				}
+				
 				isFixed = true;
 			}
 		}
@@ -154,13 +190,20 @@ void Board::correctPositionAfterRotation(){
 				if(currentTetromino.shape[i][j] == 2){
 					if(emptyBoard[currentTetromino.getYPosition() + i][currentTetromino.getXPosition() + j] != 0){
 						currentTetromino.setPosition(currentTetromino.getXPosition() + 1, currentTetromino.getYPosition());
-						correctPositionAfterRotation();
+						if(isCollidingOnRight()){
+							if(rotatedRight){
+								currentTetromino.rotateLeft();	
+							}else{
+								currentTetromino.rotateRight();
+							}
+							currentTetromino.setPosition(currentTetromino.getXPosition() - 1, currentTetromino.getYPosition());
+						}
+						correctPositionAfterRotation(rotatedRight);
 					}
 				}
 			}
 		}
 	}
-	
 }
 
 void Board::correctPositionWhenMovementIsNotValid(string direction){

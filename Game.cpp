@@ -87,7 +87,7 @@ Tetromino* Game::generateNextTetromino(){
 	srand(time(NULL));
 	
 	int randomNumber = rand() % 7 + 1;
-	randomNumber = 1;
+	
 	Tetromino *nextTetromino;
 	
 	switch(randomNumber){
